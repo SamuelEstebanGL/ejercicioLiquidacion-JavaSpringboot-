@@ -1,5 +1,8 @@
 package com.proyectoLiquidacion.ProyectoLiquidacion.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +20,11 @@ public class Empleado {
 
     private int diasLaborados;
 
+    //le añadi esta  relacion de uno a uno con la liquidacion para asi poder guardar el empleado con su liquidacion
+    @JsonIgnore //esta etiqueta me sirvio ya que tenia un error con la relacion, la cargue con diferentes foreign key ambas y se me dañaba o se desconectaba el proceso y me sirvio para que siga el proceso
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_liquidacion")
+    private Liquidacion liquidacion;
 
     //constructor vacio
     public Empleado() {
@@ -71,5 +79,13 @@ public class Empleado {
 
     public void setDiasLaborados(int diasLaborados) {
         this.diasLaborados = diasLaborados;
+    }
+
+    public Liquidacion getLiquidacion() {
+        return liquidacion;
+    }
+
+    public void setLiquidacion(Liquidacion liquidacion) {
+        this.liquidacion = liquidacion;
     }
 }

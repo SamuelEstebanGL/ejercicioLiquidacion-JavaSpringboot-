@@ -1,11 +1,15 @@
 package com.proyectoLiquidacion.ProyectoLiquidacion.Controllers;
 
 import com.proyectoLiquidacion.ProyectoLiquidacion.models.Empleado;
+import com.proyectoLiquidacion.ProyectoLiquidacion.repositories.IEmpleadoRepository;
 import com.proyectoLiquidacion.ProyectoLiquidacion.services.Interfaces.IEmpleadoservices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController

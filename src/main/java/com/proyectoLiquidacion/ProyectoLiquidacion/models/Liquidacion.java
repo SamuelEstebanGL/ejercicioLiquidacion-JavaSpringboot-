@@ -1,5 +1,7 @@
 package com.proyectoLiquidacion.ProyectoLiquidacion.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -9,21 +11,34 @@ public class Liquidacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int totalLiquidacion;
+    private int idLiquidacion;
 
+    private int totalLiquidacion;
     private int prima;
     private int cesantia;
     private double interesCesantia;
     private int vaciones;
 
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_empleado")
+    private Empleado empleado;
 
     //getter y setter//
 
-    public int getTotal() {
+    public int getIdLiquidacion() {
+        return idLiquidacion;
+    }
+
+    public void setIdLiquidacion(int idLiquidacion) {
+        this.idLiquidacion = idLiquidacion;
+    }
+
+    public int getTotalLiquidacion() {
         return totalLiquidacion;
     }
 
-    public void setTotal(int total) {
+    public void setTotalLiquidacion(int totalLiquidacion) {
         this.totalLiquidacion = totalLiquidacion;
     }
 
@@ -59,6 +74,13 @@ public class Liquidacion {
         this.vaciones = vaciones;
     }
 
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
 }
 
 

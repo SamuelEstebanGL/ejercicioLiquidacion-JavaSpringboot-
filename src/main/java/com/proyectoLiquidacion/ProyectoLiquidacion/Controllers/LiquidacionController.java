@@ -26,20 +26,16 @@ public class LiquidacionController {
         return service.cesantia(id);
     }
 
-    @GetMapping("/calcular-interesesCesantias/{id}")
-    public int interesesCesantias(@PathVariable(name = "id")Integer id){
-        return service.interesesCesantias(id);
-    }
 
     @GetMapping("/Calcular-vacaciones/{id}")
     public int vacaciones(@PathVariable(name = "id")Integer id){
         return service.vacaciones(id);
     }
 
-
-
-
-
+    @GetMapping("/total_liquidacion/{id}")
+    public int totalLiquidacion(@PathVariable(name = "id")Integer id){
+        return service.totalLiquidacion(id);
+    }
 
 
 
