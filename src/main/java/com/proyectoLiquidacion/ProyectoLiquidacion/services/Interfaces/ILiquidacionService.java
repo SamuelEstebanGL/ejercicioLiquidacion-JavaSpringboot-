@@ -1,5 +1,6 @@
 package com.proyectoLiquidacion.ProyectoLiquidacion.services.Interfaces;
 
+import com.proyectoLiquidacion.ProyectoLiquidacion.dto.EmpleadoLiquidacionDTO;
 import com.proyectoLiquidacion.ProyectoLiquidacion.models.Liquidacion;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public interface ILiquidacionService {
     public double actualizarValorinteresesCesantias(int idLiquidacion, int interesesCesantias);
     public int actualizarValorvacaciones(int idLiquidacion, int vacaciones);
 
-    public int totalLiquidacion(int idEmpleado);
+    public EmpleadoLiquidacionDTO totalLiquidacionPorEmpleado(int idEmpleado);
 
 
 }

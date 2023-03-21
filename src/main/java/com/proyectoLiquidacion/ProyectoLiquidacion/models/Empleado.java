@@ -13,7 +13,6 @@ public class Empleado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEmpleado;
 
-
     private String nombreEmpleado;
     private String apellidoEmpleado;
     private int sueldoEmpleado;
@@ -21,7 +20,6 @@ public class Empleado {
     private int diasLaborados;
 
     //le añadi esta  relacion de uno a uno con la liquidacion para asi poder guardar el empleado con su liquidacion
-    @JsonIgnore //esta etiqueta me sirvio ya que tenia un error con la relacion, la cargue con diferentes foreign key ambas y se me dañaba o se desconectaba el proceso y me sirvio para que siga el proceso
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_liquidacion")
     private Liquidacion liquidacion;

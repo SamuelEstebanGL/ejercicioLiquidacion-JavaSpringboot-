@@ -1,6 +1,7 @@
 package com.proyectoLiquidacion.ProyectoLiquidacion.services.Implementacion;
 
 import com.proyectoLiquidacion.ProyectoLiquidacion.Utils.Constantes;
+import com.proyectoLiquidacion.ProyectoLiquidacion.dto.EmpleadoLiquidacionDTO;
 import com.proyectoLiquidacion.ProyectoLiquidacion.models.Empleado;
 import com.proyectoLiquidacion.ProyectoLiquidacion.models.Liquidacion;
 import com.proyectoLiquidacion.ProyectoLiquidacion.repositories.IEmpleadoRepository;
@@ -12,11 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LiquidacionService implements ILiquidacionService {
+public class LiquidacionServiceImpl implements ILiquidacionService {
 
   // private int cesantias;
     @Autowired
@@ -143,15 +143,19 @@ public class LiquidacionService implements ILiquidacionService {
         }
     }
 
-
     @Override
-    public int totalLiquidacion(int idEmpleado) {
+    public EmpleadoLiquidacionDTO totalLiquidacionPorEmpleado(int idEmpleado) {
         Optional<Empleado> empleado = liquidacionRepository.findByIdEmpleado(idEmpleado);
         Optional<Liquidacion> liquidacion = iTotalLiquidacion.findById(empleado.get().getLiquidacion().getIdLiquidacion());
+        EmpleadoLiquidacionDTO empleadoLiquidacionDTO = new EmpleadoLiquidacionDTO();
+        empleadoLiquidacionDTO.setIdEmpleado(empleado.get().getIdEmpleado());
+        empleadoLiquidacionDTO.setNombreEmpleado(empleado.get().getNombreEmpleado());
+        empleadoLiquidacionDTO.setIdLiquidacion(liquidacion.get().getIdLiquidacion());
         int total = (int) (liquidacion.get().getPrima() + liquidacion.get().getCesantia() + liquidacion.get().getInteresCesantia() + liquidacion.get().getVaciones());
+        empleadoLiquidacionDTO.setTotalLiquidacion(total);
         liquidacion.get().setTotalLiquidacion(total);
         iTotalLiquidacion.save(liquidacion.get());
-        return total;
+        return empleadoLiquidacionDTO;
     }
 
 }

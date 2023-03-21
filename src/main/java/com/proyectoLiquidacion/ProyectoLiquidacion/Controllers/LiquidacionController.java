@@ -1,6 +1,7 @@
 package com.proyectoLiquidacion.ProyectoLiquidacion.Controllers;
 
 
+import com.proyectoLiquidacion.ProyectoLiquidacion.dto.EmpleadoLiquidacionDTO;
 import com.proyectoLiquidacion.ProyectoLiquidacion.services.Interfaces.ILiquidacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +33,9 @@ public class LiquidacionController {
         return service.vacaciones(id);
     }
 
-    @GetMapping("/total_liquidacion/{id}")
-    public int totalLiquidacion(@PathVariable(name = "id")Integer id){
-        return service.totalLiquidacion(id);
+    @GetMapping("/total_liquidacion_por_empleado/{id}")
+    public EmpleadoLiquidacionDTO totalLiquidacionPorEmpleado(@PathVariable(name = "id")Integer id){
+        return service.totalLiquidacionPorEmpleado(id);
     }
 
 

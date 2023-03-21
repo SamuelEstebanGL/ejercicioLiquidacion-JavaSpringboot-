@@ -1,5 +1,6 @@
 package com.proyectoLiquidacion.ProyectoLiquidacion.Controllers;
 
+import com.proyectoLiquidacion.ProyectoLiquidacion.dto.EmpleadoDTO;
 import com.proyectoLiquidacion.ProyectoLiquidacion.models.Empleado;
 import com.proyectoLiquidacion.ProyectoLiquidacion.repositories.IEmpleadoRepository;
 import com.proyectoLiquidacion.ProyectoLiquidacion.services.Interfaces.IEmpleadoservices;
@@ -21,15 +22,15 @@ public class EmpleadoController {
 
 
     @GetMapping("/buscarEmpleados")
-    public List<Empleado> buscarTodos(){
-        List<Empleado> empleadoList = service.buscarTodos();
+    public List<EmpleadoDTO> buscarTodos(){
+        List<EmpleadoDTO> empleadoList = service.buscarTodos();
         return empleadoList;
     }
 
     @PostMapping("/guardarEmpleado")
-    public Empleado guardar(@RequestBody Empleado empleado){
-        service.guardar(empleado);
-        return empleado;
+    public EmpleadoDTO guardar(@RequestBody EmpleadoDTO empleadodto){
+        service.guardar(empleadodto);
+        return empleadodto;
     }
 
     @DeleteMapping("/eliminar-Empleado/{id}")

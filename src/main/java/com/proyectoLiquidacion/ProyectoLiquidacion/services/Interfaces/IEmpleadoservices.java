@@ -1,13 +1,15 @@
 package com.proyectoLiquidacion.ProyectoLiquidacion.services.Interfaces;
 
+import com.proyectoLiquidacion.ProyectoLiquidacion.dto.EmpleadoDTO;
 import com.proyectoLiquidacion.ProyectoLiquidacion.models.Empleado;
 
 import java.util.List;
 
 public interface IEmpleadoservices {
-    List<Empleado> buscarTodos();
+    List<EmpleadoDTO> buscarTodos();
 
-    void guardar(Empleado empleado);
+    void guardar(EmpleadoDTO empleadodto);
+
     void eliminar(Integer idEmpleado);
     void actualizar(Empleado empleado);
 

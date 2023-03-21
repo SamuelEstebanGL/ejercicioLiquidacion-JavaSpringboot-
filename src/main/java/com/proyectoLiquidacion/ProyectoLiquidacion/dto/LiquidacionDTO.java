@@ -1,16 +1,10 @@
-package com.proyectoLiquidacion.ProyectoLiquidacion.models;
+package com.proyectoLiquidacion.ProyectoLiquidacion.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.proyectoLiquidacion.ProyectoLiquidacion.models.Liquidacion;
 
-import javax.persistence.*;
+import java.io.Serializable;
 
-
-@Entity
-@Table(name = "liquidacion")
-public class Liquidacion {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class LiquidacionDTO implements Serializable {
     private int idLiquidacion;
 
     private int totalLiquidacion;
@@ -18,13 +12,6 @@ public class Liquidacion {
     private int cesantia;
     private double interesCesantia;
     private int vaciones;
-
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_empleado")
-    private Empleado empleado;
-
-    //getter y setter//
 
     public int getIdLiquidacion() {
         return idLiquidacion;
@@ -73,14 +60,4 @@ public class Liquidacion {
     public void setVaciones(int vaciones) {
         this.vaciones = vaciones;
     }
-
-    public Empleado getEmpleado() {
-        return empleado;
-    }
-
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
 }
-
-
